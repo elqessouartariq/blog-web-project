@@ -1,19 +1,23 @@
 {
-  "name": "server",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
-    "constantinople": "^4.0.1",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "^4.18.2",
-    "http-errors": "~1.6.3",
-    "jade": "^0.31.2",
-    "jstransformer": "^1.0.0",
-    "morgan": "~1.9.1",
-    "pug": "^3.0.2"
-  }
+	"name": "server",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"start": "nodemon ./bin/www",
+		"prettier": "prettier --write ."
+	},
+	"dependencies": {
+		"constantinople": "^4.0.1",
+		"cookie-parser": "~1.4.4",
+		"debug": "~2.6.9",
+		"express": "^4.18.2",
+		"http-errors": "~1.6.3",
+		"jade": "^0.31.2",
+		"jstransformer": "^1.0.0",
+		"morgan": "~1.9.1",
+		"pug": "^3.0.2"
+	},
+	"devDependencies": {
+		"prettier": "^2.8.8"
+	}
 }

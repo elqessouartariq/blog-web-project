@@ -1,24 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', (req, res) => {
-	res.send('Get all articles');
-});
+const articlesController = require('../controllers/articlesController');
 
-router.get('/:id', (req, res) => {
-	res.send('Get an existing article');
-});
+router.get('/', articlesController.getAllArticles);
 
-router.post('/', (req, res) => {
-	res.send('Create a new article');
-});
+router.get('/:id', articlesController.getOneArticle);
 
-router.patch('/:id', (req, res) => {
-	res.send('Update an existing article');
-});
+router.post('/', articlesController.createNewArticle);
 
-router.delete('/:id', (req, res) => {
-	res.send('Delete an existing article');
-});
+router.patch('/:id', articlesController.updateOneArticle);
+
+router.delete('/:id', articlesController.deleteOneArticle);
 
 module.exports = router;

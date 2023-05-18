@@ -6,10 +6,10 @@ const getAllArticles = async () => {
 };
 
 const getOneArticle = async (id) => {
-	id = parseInt(id);
-	const oneArticle = await prisma.article.findMany({
+	const parsedId = parseInt(id);
+	const oneArticle = await prisma.article.findUnique({
 		where: {
-			id,
+			id: parsedId,
 		},
 	});
 	return oneArticle;

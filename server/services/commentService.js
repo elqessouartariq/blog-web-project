@@ -1,21 +1,64 @@
-const getAllComments = () => {
-	return;
+const prisma = require('./prisma');
+
+const getAllComments = async () => {
+	const allComments = await prisma.comment.findMany();
+	return allComments;
 };
 
-const getOneComment = () => {
-	return;
+const getOneComment = async (id) => {
+	const parsedId = parseInt(id);
+	const oneComment = await prisma.comment.findUnique({
+		where: {
+			id: parsedId,
+		},
+	});
+	return oneComment;
 };
 
-const createNewComment = () => {
-	return;
+const createNewComment = async (data) => {
+	const { content, articleId, email } = data;
+	const comment = {
+		content,
+		articleId: parseInt(articleId),
+		email,
+	};
+	const newComment = await prisma.comment.create({
+		data: {
+			...comment,
+		},
+	});
+	return newComment;
 };
 
-const updateOneComment = () => {
-	return;
+const updateOneComment = async (data, id) => {
+	const parsedId = parseInt(id);
+	const { content, articleId, email } = data;
+	const comment = {
+		content,
+		articleId: parseInt(articleId),
+		email,
+	};
+	const updatedComment = await prisma.comment.update({
+		where: {
+			id: parsedId,
+		},
+		data: {
+			content: comment.content,
+			articleId: comment.articleId,
+			email: comment.email,
+		},
+	});
+	return updatedComment;
 };
 
-const deleteOneComment = () => {
-	return;
+const deleteOneComment = async (id) => {
+	const parsedId = parseInt(id);
+	const deletedComment = await prisma.comment.delete({
+		where: {
+			id: parsedId,
+		},
+	});
+	return deletedComment;
 };
 
 module.exports = {

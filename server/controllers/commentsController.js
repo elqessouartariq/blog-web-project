@@ -1,28 +1,37 @@
 const commentService = require('../services/commentService');
 
-const getAllComments = (req, res) => {
-	const allComments = commentService.getAllComments();
-	res.send('Get all Comments');
+const getAllComments = async (req, res) => {
+	const allComments = await commentService.getAllComments();
+	if (!allComments) {
+		return res.status(404).send('No Comments Found');
+	}
+	res.json(allComments);
 };
 
-const getOneComment = (req, res) => {
-	const oneComment = commentService.getOneComment();
-	res.send('Get an existing Comment');
+const getOneComment = async (req, res) => {
+	const { id } = req.params;
+	const oneComment = await commentService.getOneComment(id);
+	if (!oneComment) {
+		return res.status(404).send('No Comment Found');
+	}
+	res.json(oneComment);
 };
 
-const createNewComment = (req, res) => {
-	const newComment = commentService.createNewComment();
-	res.send('Create a new Comment');
+const createNewComment = async (req, res) => {
+	const newComment = await commentService.createNewComment(req.body);
+	res.json(newComment);
 };
 
-const updateOneComment = (req, res) => {
-	const updateComment = commentService.updateOneComment();
-	res.send('Update an existing Comment');
+const updateOneComment = async (req, res) => {
+	const { id } = req.params;
+	const updateComment = await commentService.updateOneComment(req.body, id);
+	res.json(updateComment);
 };
 
-const deleteOneComment = (req, res) => {
-	const deleteComment = commentService.deleteOneComment();
-	res.send('Delete an existing Comment');
+const deleteOneComment = async (req, res) => {
+	const { id } = req.params;
+	const deleteComment = await commentService.deleteOneComment(id);
+	res.json(deleteComment);
 };
 
 module.exports = {

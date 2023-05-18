@@ -1,21 +1,69 @@
-const getAllArticles = () => {
-	return;
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+const getAllArticles = async () => {
+	const articles = await prisma.article.findMany();
+	return articles;
 };
 
-const getOneArticle = () => {
-	return;
+const getOneArticle = async (id) => {
+	id = parseInt(id);
+	const oneArticle = await prisma.article.findMany({
+		where: {
+			id,
+		},
+	});
+	return oneArticle;
 };
 
-const createNewArticle = () => {
-	return;
+const createNewArticle = async (data) => {
+	const { title, content, authorId, image, published } = data;
+	const article = {
+		title: title,
+		content: content,
+		authorId: authorId,
+		image: image,
+		published: published,
+	};
+	const newArticle = await prisma.article.create({
+		data: {
+			...article,
+		},
+	});
+	return newArticle;
 };
 
-const updateOneArticle = () => {
-	return;
+const updateOneArticle = async (data, id) => {
+	const { title, content, authorId, image, published } = data;
+	const article = {
+		title: title,
+		content: content,
+		authorId: authorId,
+		image: image,
+		published: published,
+	};
+	const updatedArticle = await prisma.article.update({
+		where: {
+			id: parseInt(id),
+		},
+		data: {
+			title: article.title,
+			content: article.content,
+			authorId: article.authorId,
+			image: article.image,
+			published: article.published,
+		},
+	});
+	return updatedArticle;
 };
 
-const deleteOneArticle = () => {
-	return;
+const deleteOneArticle = async (id) => {
+	const deletedArticle = await prisma.article.delete({
+		where: {
+			id: parseInt(id),
+		},
+	});
+	return deletedArticle;
 };
 
 module.exports = {

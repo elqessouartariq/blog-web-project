@@ -1,28 +1,37 @@
 const articleService = require('../services/articleService');
 
-const getAllArticles = (req, res) => {
-	const allArticles = articleService.getAllArticles();
-	res.send('Get all articles');
+const getAllArticles = async (req, res) => {
+	const allArticles = await articleService.getAllArticles();
+	if (!allArticles) {
+		res.status(404).json({ error: 'No articles found' });
+	}
+	res.json(allArticles);
 };
 
-const getOneArticle = (req, res) => {
-	const oneArticle = articleService.getOneArticle();
-	res.send('Get an existing articles');
+const getOneArticle = async (req, res) => {
+	const { id } = req.params;
+	const oneArticle = await articleService.getOneArticle(id);
+	if (!oneArticle) {
+		res.status(404).json({ error: 'No article found with the given id' });
+	}
+	res.json(oneArticle);
 };
 
-const createNewArticle = (req, res) => {
-	const newArticle = articleService.createNewArticle();
-	res.send('Create a new articles');
+const createNewArticle = async (req, res) => {
+	const newArticle = await articleService.createNewArticle(req.body);
+	res.json(newArticle);
 };
 
-const updateOneArticle = (req, res) => {
-	const updateArticle = articleService.updateOneArticle();
-	res.send('Update an existing articles');
+const updateOneArticle = async (req, res) => {
+	const { id } = req.params;
+	const updateArticle = await articleService.updateOneArticle(req.body, id);
+	res.json(updateArticle);
 };
 
-const deleteOneArticle = (req, res) => {
-	const deleteArticle = articleService.deleteOneArticle();
-	res.send('Delete an existing articles');
+const deleteOneArticle = async (req, res) => {
+	const { id } = req.params;
+	const deleteArticle = await articleService.deleteOneArticle(id);
+	res.json(deleteArticle);
 };
 
 module.exports = {

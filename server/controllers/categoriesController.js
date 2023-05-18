@@ -1,28 +1,39 @@
 const categorieService = require('../services/categorieService');
 
-const getAllCategories = (req, res) => {
-	const allCategories = categorieService.getAllCategories();
-	res.send('Get all Categories');
+const getAllCategories = async (req, res) => {
+	const allCategories = await categorieService.getAllCategories();
+	if (!allCategories) {
+		res.status(404).send('No Categories found');
+	}
+	res.send(allCategories);
 };
 
-const getOneCategorie = (req, res) => {
-	const oneCategorie = categorieService.getOneCategorie();
-	res.send('Get an existing Categorie');
+const getOneCategorie = async (req, res) => {
+	const oneCategorie = await categorieService.getOneCategorie(req.params);
+	if (!oneCategorie) {
+		res.status(404).send('No Categorie found');
+	}
+	res.send(oneCategorie);
 };
 
-const createNewCategorie = (req, res) => {
-	const newCategorie = categorieService.createNewCategorie();
-	res.send('Create a new Categorie');
+const createNewCategorie = async (req, res) => {
+	const newCategorie = await categorieService.createNewCategorie(req.body);
+	res.json(newCategorie);
 };
 
-const updateOneCategorie = (req, res) => {
-	const updateCategorie = categorieService.updateOneCategorie();
-	res.send('Update an existing Categorie');
+const updateOneCategorie = async (req, res) => {
+	const { id } = req.params;
+	const updateCategorie = await categorieService.updateOneCategorie(
+		req.body,
+		id
+	);
+	res.json(updateCategorie);
 };
 
-const deleteOneCategorie = (req, res) => {
-	const deleteCategorie = categorieService.deleteOneCategorie();
-	res.send('Delete an existing Categorie');
+const deleteOneCategorie = async (req, res) => {
+	const { id } = req.params;
+	const deleteCategorie = await categorieService.deleteOneCategorie(id);
+	res.json(deleteCategorie);
 };
 
 module.exports = {

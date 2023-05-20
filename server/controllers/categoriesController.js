@@ -1,4 +1,8 @@
 const categorieService = require('../services/categorieService');
+const {
+	createNewCategorieSchema,
+	updateCategorieSchema,
+} = require('../validators/categoryValidator');
 
 const getAllCategories = async (req, res) => {
 	const allCategories = await categorieService.getAllCategories();
@@ -17,11 +21,23 @@ const getOneCategorie = async (req, res) => {
 };
 
 const createNewCategorie = async (req, res) => {
+	const { error } = createNewCategorieSchema.validate(req.body);
+	if (error) {
+		res.status(400);
+		res.send(error.details);
+	}
+
 	const newCategorie = await categorieService.createNewCategorie(req.body);
 	res.json(newCategorie);
 };
 
 const updateOneCategorie = async (req, res) => {
+	const { error } = updateCategorieSchema.validate(req.body);
+	if (error) {
+		res.status(400);
+		res.send(error.details);
+	}
+
 	const { id } = req.params;
 	const updateCategorie = await categorieService.updateOneCategorie(
 		req.body,

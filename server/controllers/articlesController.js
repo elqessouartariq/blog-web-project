@@ -1,4 +1,8 @@
 const articleService = require('../services/articleService');
+const {
+	createNewArticleSchema,
+	updateArticleSchema,
+} = require('../validators/articleValidator');
 
 const getAllArticles = async (req, res) => {
 	const allArticles = await articleService.getAllArticles();
@@ -18,11 +22,29 @@ const getOneArticle = async (req, res) => {
 };
 
 const createNewArticle = async (req, res) => {
+	const { error } = createNewArticleSchema.validate(req.body);
+
+	if (error) {
+		res.status(400);
+		res.send(error.details);
+		return;
+	}
+
 	const newArticle = await articleService.createNewArticle(req.body);
 	res.json(newArticle);
 };
 
 const updateOneArticle = async (req, res) => {
+	const { error } = updateArticleSchema.validate(req.body, {
+		abortEarly: false,
+	});
+
+	if (error) {
+		res.status(400);
+		res.send(error.details);
+		return;
+	}
+
 	const { id } = req.params;
 	const updateArticle = await articleService.updateOneArticle(req.body, id);
 	res.json(updateArticle);

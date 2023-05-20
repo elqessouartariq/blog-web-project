@@ -1,17 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
+const usersController = require('../controllers/usersController');
+
+router.post('/register', usersController.register);
+router.post('/signin', usersController.signin);
+
 router.get('/', (req, res) => {
-	res.send('Get all userss');
+	res.send('Get all users');
 });
 
 router.get('/:id', (req, res) => {
 	res.send('Get an existing users');
-});
-
-router.post('/', (req, res) => {
-	res.send('Create a new users');
 });
 
 router.patch('/:id', (req, res) => {

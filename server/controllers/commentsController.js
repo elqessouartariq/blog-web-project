@@ -1,4 +1,8 @@
 const commentService = require('../services/commentService');
+const {
+	createNewCommentSchema,
+	updateCommentSchema,
+} = require('../validators/commentValidator');
 
 const getAllComments = async (req, res) => {
 	const allComments = await commentService.getAllComments();
@@ -18,11 +22,30 @@ const getOneComment = async (req, res) => {
 };
 
 const createNewComment = async (req, res) => {
+	const { error } = createNewCommentSchema.validate(req.body, {
+		abortEarly: false,
+	});
+
+	if (error) {
+		res.status(400);
+		res.send(error.details);
+		return;
+	}
+
 	const newComment = await commentService.createNewComment(req.body);
 	res.json(newComment);
 };
 
 const updateOneComment = async (req, res) => {
+	const { error } = updateCommentSchema.validate(req.body, {
+		abortEarly: false,
+	});
+	if (error) {
+		res.status(400);
+		res.send(error.details);
+		return;
+	}
+
 	const { id } = req.params;
 	const updateComment = await commentService.updateOneComment(req.body, id);
 	res.json(updateComment);

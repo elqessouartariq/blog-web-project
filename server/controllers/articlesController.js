@@ -22,7 +22,9 @@ const getOneArticle = async (req, res) => {
 };
 
 const createNewArticle = async (req, res) => {
-	const { error } = createNewArticleSchema.validate(req.body);
+	const { error } = createNewArticleSchema.validate(req.body, {
+		abortEarly: false,
+	});
 
 	if (error) {
 		res.status(400);

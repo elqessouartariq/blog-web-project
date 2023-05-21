@@ -21,7 +21,10 @@ const getOneCategorie = async (req, res) => {
 };
 
 const createNewCategorie = async (req, res) => {
-	const { error } = createNewCategorieSchema.validate(req.body);
+	const { error } = createNewCategorieSchema.validate(req.body, {
+		abortEarly: false,
+	});
+
 	if (error) {
 		res.status(400);
 		res.send(error.details);
@@ -32,7 +35,9 @@ const createNewCategorie = async (req, res) => {
 };
 
 const updateOneCategorie = async (req, res) => {
-	const { error } = updateCategorieSchema.validate(req.body);
+	const { error } = updateCategorieSchema.validate(req.body, {
+		abortEarly: false,
+	});
 	if (error) {
 		res.status(400);
 		res.send(error.details);

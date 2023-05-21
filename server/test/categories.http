@@ -1,0 +1,35 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2ODQ2MDE2MTF9.jmpH8i0m072YET3HK-RwjjwXSRJwU_1DdMwVnYCJloI
+@url = http://localhost:3000
+
+
+GET {{url}}/categories HTTP/1.1
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+
+GET {{url}}/categories/1 HTTP/1.1
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+
+POST {{url}}/categories HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "new_category_joi"
+}
+###
+
+PATCH  {{url}}/categories/1 HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "new_category_joi"
+}
+###
+
+DELETE {{url}}/categories/1 HTTP/1.1
+Authorization: Bearer {{token}}
+Accept: application/json

@@ -1,0 +1,38 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2ODQ2MDE2MTF9.jmpH8i0m072YET3HK-RwjjwXSRJwU_1DdMwVnYCJloI
+@url = http://localhost:3000
+
+
+GET {{url}}/comments HTTP 1.1
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+
+GET {{url}}/comments/1 HTTP 1.1
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+
+POST {{url}}/comments HTTP 1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "content": "this a comment by joy",
+    "articleId": 2,
+    "email": "test@gmail.com"
+}
+###
+
+PATCH  {{url}}/comments/1 HTTP 1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "email": "new_email@gmail.com",
+    "articleId": 2
+}
+###
+
+DELETE {{url}}/comments/1 HTTP 1.1
+Authorization: Bearer {{token}}
+Accept: application/json

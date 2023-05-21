@@ -1,0 +1,40 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2ODQ2MDE2MTF9.jmpH8i0m072YET3HK-RwjjwXSRJwU_1DdMwVnYCJloI
+@url = http://localhost:3000
+
+
+GET {{url}}/articles HTTP/1.1
+Authorization: token {{token}}
+Accept: application/json
+###
+
+GET {{url}}/articles/12 HTTP/1.1
+Authorization: token {{token}}
+Accept: application/json
+###
+
+POST {{url}}/articles HTTP/1.1
+Authorization: token {{token}}
+Content-Type: application/json
+
+{
+	"title": "rest_client new  Article",
+	"content": "This is the content of the article.",
+	"authorId": 1,
+	"image": "https://example.com/image.jpg",
+	"published": false
+}
+###
+
+PATCH  {{url}}/articles/12 HTTP/1.1
+Authorization: token {{token}}
+Content-Type: application/json
+
+{
+    "title": "joi Sample Article",
+    "published": false
+}
+###
+
+DELETE {{url}}/articles/12 HTTP/1.1
+Authorization: token {{token}}
+Accept: application/json

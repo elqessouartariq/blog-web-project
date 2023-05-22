@@ -1,4 +1,4 @@
-import SmallButton from './shared/smallButton';
+import SmallButton from './shared/SmallButton';
 
 const Header = () => {
 	return (

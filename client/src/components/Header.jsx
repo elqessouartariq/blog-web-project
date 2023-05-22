@@ -26,7 +26,7 @@ const Header = () => {
 					<button>
 						<img src="/src/assets/searchIcon.svg" className="h-6" />
 					</button>
-					<SmallButton text="Log in" />
+					<SmallButton text="Log in" onClick={() => {}} />
 				</div>
 			</div>
 		</>

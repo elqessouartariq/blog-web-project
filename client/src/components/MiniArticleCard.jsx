@@ -13,7 +13,7 @@ const MiniArticleCard = ({
 	content,
 }) => {
 	return (
-		<div className="w-[509px] bg-white p-10">
+		<div className="w-[509px] bg-white p-10 py-20">
 			<CategoryTitle title={category} />
 			<ArticleCardTitle title={title} />
 			<ArticleCardInformations
@@ -27,12 +27,12 @@ const MiniArticleCard = ({
 };
 
 MiniArticleCard.propTypes = {
-    category: PropTypes.string,
-    title: PropTypes.string,
-    authorName: PropTypes.string,
-    date: PropTypes.string,
-    readTime: PropTypes.number,
-    content: PropTypes.string,
+	category: PropTypes.string,
+	title: PropTypes.string,
+	authorName: PropTypes.string,
+	date: PropTypes.string,
+	readTime: PropTypes.number,
+	content: PropTypes.string,
 };
 
 MiniArticleCard.defaultProps = {

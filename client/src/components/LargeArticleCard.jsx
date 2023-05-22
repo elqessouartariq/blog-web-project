@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const LargeArticleCard = ({ image, children }) => {
 	return (
 		<div className="flex">
-			<div>
+			<div className="p-20">
 				<img
 					className="w-72 h-72 object-cover"
 					src={image}

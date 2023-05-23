@@ -14,7 +14,7 @@ const MiniArticleCard = ({
 	padding,
 }) => {
 	return (
-		<div className={`w-[509px] bg-white p-${padding}`}>
+		<div className={`w-[509px] bg-white ${padding}`}>
 			<CategoryTitle title={category} />
 			<ArticleCardTitle title={title} />
 			<ArticleCardInformations
@@ -34,7 +34,7 @@ MiniArticleCard.propTypes = {
 	date: PropTypes.string,
 	readTime: PropTypes.number,
 	content: PropTypes.string,
-	padding: PropTypes.number,
+	padding: PropTypes.string,
 };
 
 MiniArticleCard.defaultProps = {
@@ -43,7 +43,7 @@ MiniArticleCard.defaultProps = {
 	authorName: 'Ralph Hawkins',
 	date: 'May 7, 2019',
 	readTime: 10,
-	padding: 10,
+	padding: 'p-0',
 	content:
 		'Proident aliquip velit qui commodo officia qui consectetur dolor ullamco aliquip elit incididunt. Ea minim ex consectetur excepteur. Ex laborum nostrud mollit sint consectetur Lorem amet aliqua do enim. Commodo duis dolor anim excepteur. In aliquip mollit nulla consequat velit magna.',
 };

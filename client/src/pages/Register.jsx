@@ -4,10 +4,10 @@ const Register = () => {
 	return (
 		<div className="flex justify-center items-center h-screen">
 			<form className="w-full max-w-sm">
-				<h1 className="font-heading text-3xl text-primaryBlack font-bold mb-3">
+				<h1 className="font-heading text-3xl text-primaryBlack font-bold mb-3 text-center">
 					Create New Account!
 				</h1>
-				<p className="font-primary text-primaryBlack font-normal text-base mb-3">
+				<p className="font-primary text-primaryBlack font-normal text-base mb-3 text-center">
 					Register now to unlock the full potential of nuntium.
 				</p>
 				<div className="mb-3">

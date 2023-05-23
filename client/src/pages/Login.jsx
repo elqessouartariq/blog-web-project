@@ -3,14 +3,14 @@ const Login = () => {
 	return (
 		<>
 			<div className="flex justify-center items-center h-screen">
-				<form className="w-full max-w-[23rem]">
-					<h1 className="font-heading text-3xl text-primaryBlack font-bold mb-3">
+				<form className="w-full max-w-[23rem] ">
+					<h1 className="font-heading text-3xl text-primaryBlack font-bold mb-3 text-center">
 						Welcome back!
 					</h1>
-					<p className="font-primary text-primaryBlack font-normal text-base mb-3">
+					<p className="font-primary text-primaryBlack font-normal text-base mb-3 text-center">
 						Sign in to get the most out of nuntium.
 					</p>
-					<div className="mb-3">
+					<div className="mb-3 ">
 						<label
 							htmlFor="email"
 							className="font-primary font-medium"
@@ -35,7 +35,7 @@ const Login = () => {
 					<div className="mb-3">
 						<label
 							htmlFor="password"
-							className="font-primary font-medium"
+							className="font-primary font-medium "
 						>
 							Password
 						</label>

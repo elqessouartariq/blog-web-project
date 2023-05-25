@@ -4,13 +4,13 @@ const FeaturedArticleSection = ({ children }) => {
 	return (
 		<section className="mt-10">
 			<div className="relative">
-				<div className="absolute  inset-y-3 inset-x-[75px]">
+				<div className="flex  items-center justify-start p-9 z-10">
 					{children}
 				</div>
 
 				<img
 					src="/src/assets/BigArticleImage.svg"
-					className="w-full h-full object-cover"
+					className="w-full h-full object-cover absolute top-0 left-0 -z-40"
 					alt="Big Article Image"
 				/>
 			</div>

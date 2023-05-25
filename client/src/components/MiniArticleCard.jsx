@@ -14,7 +14,7 @@ const MiniArticleCard = ({
 	padding,
 }) => {
 	return (
-		<div className={`w-[509px] bg-white ${padding}`}>
+		<div className={` xl:w-5/12 bg-white ${padding}`}>
 			<CategoryTitle title={category} />
 			<ArticleCardTitle title={title} />
 			<ArticleCardInformations

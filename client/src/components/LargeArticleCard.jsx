@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 
 const LargeArticleCard = ({ image, children }) => {
 	return (
-		<div className="flex ">
-			<div>
+		<div className="flex flex-wrap justify-center md:flex-nowrap mx-auto md:my-4">
+			<div className="h-full w-full md:h-96  md:2/4">
 				<img
-					className="w-72 h-72 object-cover"
+					className="object-cover h-full w-full"
 					src={image}
 					alt="rectangal image"
 				/>
 			</div>
-			<div className="m-8">{children}</div>
+			<div className="m-8 md:3/4">{children}</div>
 		</div>
 	);
 };

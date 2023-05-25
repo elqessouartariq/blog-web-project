@@ -14,6 +14,9 @@ export default {
 				secondaryBlack: '#1C1C1C',
 			},
 		},
+		dropShadow: {
+			sm: '0px 0px 5px rgba(228, 228, 228, 0.25)',
+		},
 	},
 	plugins: [],
 };

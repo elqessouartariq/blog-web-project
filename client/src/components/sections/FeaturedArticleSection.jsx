@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const FeaturedArticleSection = ({ children }) => {
 	return (
-		<section className="mt-10">
+		<section className="mt-10 ">
 			<div className="relative">
 				<div className="flex  items-center justify-start p-9 z-10">
 					{children}

@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 const EditorsPickSection = ({ children }) => {
 	return (
-		<section className="mt-10 flex justify-center flex-wrap">
-			<div className="w-full flex-grow-1 mb-16">
+		<section className="mt-10 flex-col justify-center ">
+			<div className="w-full mb-16">
 				<div className="flex items-center justify-center h-full">
 					<div className="text-center flex flex-col items-center">
 						<h1 className="text-5xl font-bold font-primary">

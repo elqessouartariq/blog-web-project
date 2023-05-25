@@ -26,13 +26,13 @@ const MoreArticlesSection = () => {
 
 	return (
 		<section className="w-10/12 mx-auto">
-			<div className="flex justify-center">
-				<div className="md:w-3/4">
+			<div className="flex flex-wrap-reverse lg:flex-nowrap justify-center">
+				<div className="lg:w-3/4">
 					<HorizontalArticleCard />
 					<HorizontalArticleCard />
 					<HorizontalArticleCard />
 				</div>
-				<div className="md:w-1/4 mt-10">
+				<div className="flex flex-wrap lg:block lg:flex-nowrap space-x-6 lg:w-1/4 mt-10">
 					<h1 className="font-primary font-bold text-lg">
 						Categories
 					</h1>

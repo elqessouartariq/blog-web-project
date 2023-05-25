@@ -14,11 +14,11 @@ const HorizontalArticleCard = ({
 	content,
 }) => {
 	return (
-		<div className="flex mt-10">
-			<div className="">
-				<img src={img} className="w-60 h-60 object-cover" />
+		<div className="flex flex-wrap lg:flex-nowrap mt-10 mx-6 lg:mx-auto">
+			<div className="w-full lg:w-1/3 ">
+				<img src={img} className="w-full h-full object-cover" />
 			</div>
-			<div className="ml-10 sm:w-1/2">
+			<div className="lg:ml-10 lg:w-1/2 mt-4 lg:mt-0">
 				<CategoryTitle title={category} />
 				<ArticleCardTitle title={title} />
 				<ArticleCardInformations

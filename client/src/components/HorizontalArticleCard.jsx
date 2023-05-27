@@ -49,7 +49,7 @@ HorizontalArticleCard.propTypes = {
 	category: PropTypes.string,
 	authorName: PropTypes.string,
 	date: PropTypes.string,
-	readTime: PropTypes.string,
+	readTime: PropTypes.number,
 	content: PropTypes.string,
 };
 

@@ -1,8 +1,11 @@
 import SmallButton from './shared/SmallButton';
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import UserPrimaryMenu from './UserPrimaryMenu';
 
 const Header = () => {
 	const [isNavOpen, setIsNavOpen] = useState(false);
+	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 	return (
 		<>
 			<nav>
@@ -37,18 +40,18 @@ const Header = () => {
 						</div>
 						<ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
 							<li className="border-b border-gray-400 my-8 uppercase">
-								<a href="/about">About</a>
+								<a href="/about">Home</a>
 							</li>
 							<li className="border-b border-gray-400 my-8 uppercase">
-								<a href="/portfolio">Portfolio</a>
+								<a href="/portfolio">Categories</a>
 							</li>
 							<li className="border-b border-gray-400 my-8 uppercase">
-								<a href="/contact">Contact</a>
+								<a href="/contact">About</a>
 							</li>
 						</ul>
 					</div>
 				</section>
-				<section className="hidden lg:block lg:flex lg:items-center lg:justify-between">
+				<section className="hidden lg:flex lg:items-center lg:justify-between">
 					<div className="left-navbar flex items-center ">
 						<div className="mr-6">
 							<img src="/src/assets/logo.svg" />
@@ -89,15 +92,23 @@ const Header = () => {
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<button
+									onClick={() => {
+										isUserMenuOpen
+											? setIsUserMenuOpen(false)
+											: setIsUserMenuOpen(true);
+									}}
+								>
 									<img
 										src="/src/assets/profilePicture.svg"
 										alt="Profile picture"
 										className="rounded-full h-12 w-12"
 									/>
-								</a>
+								</button>
 							</li>
 						</ul>
+						{isUserMenuOpen &&
+							createPortal(<UserPrimaryMenu />, document.body)}
 					</div>
 				</section>
 			</nav>

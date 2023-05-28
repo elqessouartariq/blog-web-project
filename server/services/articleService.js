@@ -11,6 +11,9 @@ const getOneArticle = async (id) => {
 		where: {
 			id: parsedId,
 		},
+		include: {
+			author: true,
+		},
 	});
 	return oneArticle;
 };

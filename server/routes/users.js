@@ -10,9 +10,7 @@ router.get('/', (req, res) => {
 	res.send('Get all users');
 });
 
-router.get('/:id', (req, res) => {
-	res.send('Get an existing users');
-});
+router.get('/:id', usersController.getOneUser);
 
 router.patch('/:id', (req, res) => {
 	res.send('Update an existing users');

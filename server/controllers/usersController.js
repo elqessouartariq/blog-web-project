@@ -38,7 +38,17 @@ const signin = async (req, res) => {
 	res.send({ token });
 };
 
+const getOneUser = async (req, res) => {
+	const user = await userService.getOneUser(req.params.id);
+	if (!user) {
+		res.status(404);
+		res.send('User not found');
+	}
+	res.json(user);
+};
+
 module.exports = {
 	register,
 	signin,
+	getOneUser,
 };

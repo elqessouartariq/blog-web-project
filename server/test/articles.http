@@ -7,7 +7,7 @@ Authorization: token {{token}}
 Accept: application/json
 ###
 
-GET {{url}}/articles/12 HTTP/1.1
+GET {{url}}/articles/1 HTTP/1.1
 Authorization: token {{token}}
 Accept: application/json
 ###

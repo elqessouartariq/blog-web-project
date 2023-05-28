@@ -36,7 +36,17 @@ const signin = async (data, res) => {
 	return token;
 };
 
+const getOneUser = async (id) => {
+	const parsedId = parseInt(id);
+	const oneUser = await prisma.user.findUnique({
+		where: {
+			id: parsedId,
+		},
+	});
+	return oneUser;
+};
 module.exports = {
 	register,
 	signin,
+	getOneUser,
 };

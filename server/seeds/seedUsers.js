@@ -6,6 +6,9 @@ async function seedUsers(prisma, faker) {
 			name: faker.person.firstName(),
 			email: faker.internet.email(),
 			password: faker.internet.password(),
+			username: faker.internet.userName(),
+			avatar: faker.image.avatar(),
+			about: faker.lorem.paragraph(),
 		};
 
 		users.push(user);

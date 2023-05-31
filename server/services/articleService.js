@@ -1,7 +1,11 @@
 const prisma = require('./prisma');
 
 const getAllArticles = async () => {
-	const articles = await prisma.article.findMany();
+	const articles = await prisma.article.findMany({
+		include: {
+			author: true,
+		},
+	});
 	return articles;
 };
 

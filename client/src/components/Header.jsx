@@ -2,10 +2,15 @@ import SmallButton from './shared/SmallButton';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import UserPrimaryMenu from './UserPrimaryMenu';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
 	const [isNavOpen, setIsNavOpen] = useState(false);
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+	const navigate = useNavigate();
+	const user = JSON.parse(window.localStorage.getItem('authUser'));
+
 	return (
 		<>
 			<nav>
@@ -40,13 +45,13 @@ const Header = () => {
 						</div>
 						<ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
 							<li className="border-b border-gray-400 my-8 uppercase">
-								<a href="/about">Home</a>
+								<Link to="/">Home</Link>
 							</li>
 							<li className="border-b border-gray-400 my-8 uppercase">
-								<a href="/portfolio">Categories</a>
+								<Link to="/categories">Categories</Link>
 							</li>
 							<li className="border-b border-gray-400 my-8 uppercase">
-								<a href="/contact">About</a>
+								<Link to="/about">About</Link>
 							</li>
 						</ul>
 					</div>
@@ -59,13 +64,13 @@ const Header = () => {
 						<div>
 							<ul className="flex space-x-7">
 								<li className="font-heading font-bold">
-									<a href="#">Home</a>
+									<Link to="/">Home</Link>
 								</li>
 								<li className="font-heading font-normal">
-									<a href="#">Categories</a>
+									<Link to="/categories">Categories</Link>
 								</li>
 								<li className="font-heading font-normal">
-									<a href="#">About</a>
+									<Link to="/about">About</Link>
 								</li>
 							</ul>
 						</div>
@@ -80,9 +85,14 @@ const Header = () => {
 									/>
 								</button>
 							</li>
-							<li>
-								<SmallButton text="Log in" onClick={() => {}} />
-							</li>
+							{!user && (
+								<li>
+									<SmallButton
+										text="Log in"
+										onClick={() => navigate('login')}
+									/>
+								</li>
+							)}
 							<li>
 								<a href="#">
 									<img
@@ -91,7 +101,7 @@ const Header = () => {
 									/>
 								</a>
 							</li>
-							<li>
+							{user && (<li>
 								<button
 									onClick={() => {
 										isUserMenuOpen
@@ -105,7 +115,7 @@ const Header = () => {
 										className="rounded-full h-12 w-12"
 									/>
 								</button>
-							</li>
+							</li>)}
 						</ul>
 						{isUserMenuOpen &&
 							createPortal(<UserPrimaryMenu />, document.body)}

@@ -13,6 +13,8 @@ const register = async (data) => {
 		data: {
 			name: data.name,
 			email: data.email,
+			username: data.username,
+			about: data.about,
 			password: hash,
 		},
 	});
@@ -26,14 +28,14 @@ const signin = async (data, res) => {
 		where: { email: data.email },
 	});
 
-	if (!user) return;
+	if (!user) return {token: null, user: null};
 
 	const isValid = await comparePasswords(data.password, user.password);
 
-	if (!isValid) return;
+	if (!isValid) return {token: null, user: null};
 
 	const token = createJWT(user);
-	return token;
+	return { token, user };
 };
 
 const getOneUser = async (id) => {

@@ -2,20 +2,22 @@
 @url = http://localhost:3000
 
 
-POST  {{url}}/users/register HTTP 1.1
+POST  {{url}}/users/register
 Content-Type: application/json
 
 {
     "name": "yassin" ,
+    "username": "yassin",
     "email": "validationtst@gmail.com",
     "password": "12598654",
-    "confirmPassword": "12598654"
+    "confirmPassword": "12598654",
+    "about": "About me"
 }
 
 ###
 
 
-POST  {{url}}/users/signin HTTP 1.1
+POST  {{url}}/users/signin
 Content-Type: application/json
 
 {

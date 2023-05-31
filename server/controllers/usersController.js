@@ -30,12 +30,13 @@ const signin = async (req, res) => {
 		return;
 	}
 
-	const token = await userService.signin(req.body);
+	const { token, user } = await userService.signin(req.body);
 	if (!token) {
 		res.status(401);
 		res.send('username or password is incorrect');
+		return;
 	}
-	res.send({ token });
+	res.send({ token, user });
 };
 
 const getOneUser = async (req, res) => {

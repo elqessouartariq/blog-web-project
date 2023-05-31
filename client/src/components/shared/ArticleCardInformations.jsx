@@ -5,7 +5,7 @@ const ArticleCardInformations = ({ authorName, date, readTime }) => {
 		<p className="font-primary text-sm text-primaryGray font-normal my-3">
 			{authorName}
 			<span className="inline-block mx-3">
-				<img src="src/assets/Ellipse.svg" />
+				<img src="/src/assets/Ellipse.svg" />
 			</span>
 			{date} ({readTime} mins read)
 		</p>

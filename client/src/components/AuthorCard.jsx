@@ -8,8 +8,12 @@ const AuthorCard = ({ author }) => {
 				ABOUT THE AUTHOR
 			</h3>
 			<div className="flex items-center">
-				<img src={avatar} alt={name} className="rounded-full" />
-				<div className="ml-9">
+				<img
+					src={avatar}
+					alt={name}
+					className="rounded-full h-52 w-52 object-cover"
+				/>
+				<div className="ml-9 ">
 					<h4 className="font-heading text-3xl text-primaryBlack font-bold">
 						{name}
 					</h4>

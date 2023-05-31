@@ -3,30 +3,50 @@ import AuthorCard from '../components/AuthorCard';
 import ArticleCardInformations from '../components/shared/ArticleCardInformations';
 import ArticleCardTitle from '../components/shared/ArticleCardTitle';
 import ArticlePagination from '../components/ArticlePagination';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import axiosInstance from '../utils/axiosConfig';
+import { useState } from 'react';
 
 const Article = ({ article }) => {
 	const { img, title, content, author } = article;
+	const { id } = useParams(); 
+	const articleId = parseInt(id);
+	const [articleData, setArticle] = useState({});
+
+	useEffect(() => {
+		async function getArticle() {
+			const res = await axiosInstance.get(`articles/${articleId}`);
+			setArticle(res.data);
+		}
+		getArticle();
+	}, [articleId]);
 	return (
 		<>
 			<img
-				src={img}
-				className="w-full h-full object-cover"
+				src={articleData.image}
+				className="w-full h-screen object-cover"
 				alt="Big Article Image"
 			/>
 			<div className="mt-10 flex justify-center items-center">
 				<div className="w-1/2">
 					<div className="text-center">
-						<ArticleCardTitle textSize={'text-5xl'} title={title} />
+						<ArticleCardTitle
+							textSize={'text-5xl'}
+							title={articleData.title}
+						/>
 					</div>
 					<div className="text-center">
 						<ArticleCardInformations />
 					</div>
 					<div
 						className="font-primary text-primaryBlack leading-6 font-normal text-base mt-10"
-						dangerouslySetInnerHTML={{ __html: content }}
+						dangerouslySetInnerHTML={{
+							__html: articleData.content,
+						}}
 					/>
 					<div className="mt-24 mb-12">
-						<AuthorCard author={author} />
+						<AuthorCard author={articleData.author} />
 					</div>
 				</div>
 			</div>
